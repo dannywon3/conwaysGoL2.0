@@ -64,6 +64,9 @@ function draw() {
     text(playBool, 120, 130);
     // text(drawModeBool, 125, 160);
     text("hint: try drawing!", 19, 185);
+    textSize(13);
+    text("try pressing c, d, u, e, r, k, l", 19, 200);
+
 
 
     // drawing on grid
@@ -226,4 +229,78 @@ function mouseDragged() {
             }
         }
     }
+}
+
+// secret key
+function keyTyped() {
+    if (key == "c") {
+        clearGrid();
+    }
+
+    let rx = floor(random(arr.length-5));
+    let ry = floor(random(arr[0].length-6));
+    console.log(arr.length);
+    console.log(rx);
+    if (key === "d") {
+        // down glider
+        grid[1+rx][1+ry] = 1;
+        grid[3+rx][1+ry] = 1;
+        grid[4+rx][2+ry] = 1;
+        grid[4+rx][3+ry] = 1;
+        grid[4+rx][4+ry] = 1;
+        grid[4+rx][5+ry] = 1;
+        grid[3+rx][5+ry] = 1;
+        grid[2+rx][5+ry] = 1;
+        grid[1+rx][4+ry] = 1;
+    }
+
+    if (key == "u") {
+        // up glider
+        grid[1+rx][1+ry] = 1;
+        grid[2+rx][1+ry] = 1;
+        grid[3+rx][1+ry] = 1;
+        grid[1+rx][2+ry] = 1;
+        grid[4+rx][2+ry] = 1;
+        grid[1+rx][3+ry] = 1;
+        grid[1+rx][4+ry] = 1;
+        grid[2+rx][5+ry] = 1;
+        grid[2+rx][5+ry] = 1;
+    }
+
+    if (key == "r") {
+        // diag R glider down
+        grid[2+rx][1+ry] = 1;
+        grid[3+rx][2+ry] = 1;
+        grid[3+rx][3+ry] = 1;
+        grid[2+rx][3+ry] = 1;
+        grid[1+rx][3+ry] = 1;
+    }
+
+    if (key == "l") {
+        //diag L glider down
+        grid[2+rx][1+ry] = 1;
+        grid[1+rx][2+ry] = 1;
+        grid[3+rx][3+ry] = 1;
+        grid[2+rx][3+ry] = 1;
+        grid[1+rx][3+ry] = 1;
+    }
+
+    if (key == "e") {
+        // diag R glider up
+        grid[1+rx][1+ry] = 1;
+        grid[2+rx][1+ry] = 1;
+        grid[3+rx][1+ry] = 1;
+        grid[3+rx][2+ry] = 1;
+        grid[2+rx][3+ry] = 1;
+    }
+
+    if (key == "k") {
+        //diag L glider up
+        grid[1+rx][1+ry] = 1;
+        grid[2+rx][1+ry] = 1;
+        grid[3+rx][1+ry] = 1;
+        grid[1+rx][2+ry] = 1;
+        grid[2+rx][3+ry] = 1;
+    }
+
 }
